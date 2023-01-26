@@ -9,7 +9,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class MemoryMemberRepositoryTest {
+
+class MemoryMemberRepositoryTest {
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
     @AfterEach // 하나의 메소드가 돌아간 후 저장된 데이터를 모두 클리어 한다는 어노테이션
@@ -26,7 +27,6 @@ public class MemoryMemberRepositoryTest {
 
         Member result = repository.findById(member.getId()).get(); // 위에서 설정한 이름의 시스템 내부 아이디로 설정된 이름 변수에 저장
         assertThat(member).isEqualTo(result);
-
     }
 
     @Test
@@ -58,4 +58,5 @@ public class MemoryMemberRepositoryTest {
 
         assertThat(result.size()).isEqualTo(2); // 개수 체크
     }
+
 }

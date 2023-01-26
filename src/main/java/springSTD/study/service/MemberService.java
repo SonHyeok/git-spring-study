@@ -2,22 +2,28 @@ package springSTD.study.service;
 
 import springSTD.study.domain.Member;
 import springSTD.study.repository.MemberRepository;
-import springSTD.study.repository.MemoryMemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
 
     /**
      * 회원 가입
      */
     public Long join(Member member){
-        validateDuplicateMember(member);
+        validateDuplicateMember(member); // 같은 이름이 있는 중복 회원있는지 확인.
         memberRepository.save(member);
         return member.getId();
     }
+
+
 
     // ctrl + alt + shift + t 하면 만들어놓은 기능을 메소드로 추출 가능
     private void validateDuplicateMember(Member member) { // 중복검사 메소드

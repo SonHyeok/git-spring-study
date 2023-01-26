@@ -6,14 +6,12 @@ import java.util.*;
 
 public class MemoryMemberRepository implements MemberRepository{
 
-    private static Map<Long, Member> store = new HashMap<>(); // 뭐지
-    private static long sequence = 0L; // 뭐지
+    private static Map<Long, Member> store = new HashMap<>(); // 회원 아이디와 값
+    private static long sequence = 0L; // 뒤에 붙은 L은 변수의 형태가 Long형이라고 표시해주는 것
 
-
-    @Override
-    public Member save(Member member) {
-        member.setId(++sequence); // 아이디 값 세팅
-        store.put(member.getId(), member); // store에 저장
+    public Member save(Member member){
+        member.setId(++sequence);
+        store.put(member.getId(), member);
         return member;
     }
 
@@ -24,9 +22,9 @@ public class MemoryMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findByName(String name) {
-        return store.values().stream() // stream이 뭐지
+        return store.values().stream() // stream은 내부 반복 작업을 함
                 .filter(member -> member.getName().equals(name))
-                .findAny(); // 반복하면서 파라미터로 넘어온 member값과 같은 것 발견시 바로 반환.
+                .findAny(); // stream으로 반복하면서 파라미터로 넘어온 member값과 같은 것 발견시 바로 반환.
                             // 같은 값 없을시 optional로 감싸진 null 반환
     }
 
