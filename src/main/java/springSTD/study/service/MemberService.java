@@ -1,15 +1,19 @@
 package springSTD.study.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import springSTD.study.domain.Member;
 import springSTD.study.repository.MemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+//@Service // 컴포넌트 방식임
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    public MemberService(MemberRepository memberRepository) {
+//    @Autowired // MemoryMemberRepository와 MemberService를 자동으로 연결해줌
+    public MemberService(MemberRepository memberRepository) { // test에서 새로 만든 repository를 사용하기위한 생성자 ( 의존성 주입)
         this.memberRepository = memberRepository;
     }
 

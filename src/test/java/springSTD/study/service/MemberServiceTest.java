@@ -18,7 +18,7 @@ class MemberServiceTest {
 
     @BeforeEach
     public void beforeEach() { // 각 메소드 실행 전에 정보를 repository에 저장
-        memberRepository = new MemoryMemberRepository();
+        memberRepository = new MemoryMemberRepository(); // memberRepository 생성 ( 저장소 생성이라고 생각하면 댐)
         memberService = new MemberService(memberRepository); // MemberService.java 파일에 있는 memberrepository에 저장
     }
 

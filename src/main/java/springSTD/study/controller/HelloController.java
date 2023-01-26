@@ -37,7 +37,7 @@ public class HelloController {
     }
 
     @GetMapping("hello-string")
-    @ResponseBody // http에서 head와 body 중에서 body에 직접 데이터를 넣겠다는 의미
+    @ResponseBody // http에서 body에 직접 데이터를 넣겠다는 의미
     public String helloString(@RequestParam("name") String name){
         return "hello! " + name;
     }
